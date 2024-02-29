@@ -6,6 +6,12 @@ export default {
   // .messages({
   //   "string.empty": messages.required,
   // }),
+  firstName: () => Joi.string().trim().min(4).required(),
+  lastName: () => Joi.string().trim().min(4).required(),
+  email: () =>
+    Joi.string()
+      .trim()
+      .email({ tlds: { allow: false } }),
   username: () => Joi.string().trim().min(4).required(),
   // .messages({
   //   "string.empty": messages.required,
@@ -17,4 +23,9 @@ export default {
   //   "string.min": messages.minLength(8),
   //   "string.max": messages.maxLength(32),
   // }),
+  confirmPassword: (refName) => Joi.valid(Joi.ref(refName)),
+  role: (...roles) =>
+    Joi.string()
+      .trim()
+      .valid(...roles),
 };
