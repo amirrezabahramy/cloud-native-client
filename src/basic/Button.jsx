@@ -24,7 +24,7 @@ const Button = forwardRef(
           variant === "solid" && "text-white",
           variant === "solid" &&
             color === "primary" &&
-            "bg-pink-500 hover:bg-pink-600 active:bg-pink-700 disabled:bg-pink-200",
+            "bg-blue-500 hover:bg-blue-600 active:bg-blue-700 disabled:bg-blue-200",
           variant === "solid" &&
             color === "success" &&
             "bg-green-500 hover:bg-green-600 active:bg-green-700 disabled:bg-green-200",
@@ -38,7 +38,7 @@ const Button = forwardRef(
           variant === "outline" && "border hover:disabled:bg-transparent",
           variant === "outline" &&
             color === "primary" &&
-            "border-pink-500 text-pink-500 hover:bg-pink-100 active:bg-pink-200 disabled:border-pink-200 disabled:text-pink-200",
+            "border-blue-500 text-blue-500 hover:bg-blue-100 active:bg-blue-200 disabled:border-blue-200 disabled:text-blue-200",
           variant === "outline" &&
             color === "success" &&
             "border-green-500 text-green-500 hover:bg-green-100 active:bg-green-200 disabled:border-green-200 disabled:text-green-200",

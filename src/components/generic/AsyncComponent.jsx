@@ -6,7 +6,7 @@ function AsyncComponent({ isLoading, isError, error, children }) {
   if (isLoading) {
     return (
       <LegacyCentered>
-        <Loader color={colors.pink[500]} />
+        <Loader color={colors.blue[500]} />
       </LegacyCentered>
     );
   }
