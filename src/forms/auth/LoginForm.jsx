@@ -7,13 +7,16 @@ import { Link } from "@tanstack/react-router";
 import { useMutation } from "@tanstack/react-query";
 import api from "@/services/api";
 import { useAuth } from "@/providers/AuthProvider";
+import { joiResolver } from "@hookform/resolvers/joi";
+import Joi from "joi";
+import validators from "@/rules/validators";
 
 function LoginForm() {
   const { loginUser } = useAuth();
 
   const { isPending, mutate: submitLogin } = useMutation({
     mutationKey: ["submit-login"],
-    mutationFn: () => api.post("auth/login"),
+    mutationFn: (data) => api.post("auth/login", data),
     onSuccess: (data) => {
       loginUser(data.data.accessToken);
     },
@@ -24,6 +27,12 @@ function LoginForm() {
       username: "",
       password: "",
     },
+    resolver: joiResolver(
+      Joi.object({
+        username: validators.required(),
+        password: validators.required(),
+      })
+    ),
   });
 
   return (
@@ -31,7 +40,11 @@ function LoginForm() {
       <HFTextField label="Username" name="username" control={control} />
       <HFPasswordField label="Password" name="password" control={control} />
       <>
-        <LoadingButton isLoading={isPending} className="mt-3 mb-1">
+        <LoadingButton
+          type="submit"
+          isLoading={isPending}
+          className="mt-3 mb-1"
+        >
           Submit
         </LoadingButton>
         <p>
