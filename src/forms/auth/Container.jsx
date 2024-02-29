@@ -1,9 +1,9 @@
-import Form from "@/basic/Form";
+import Form from "@/components/basic/Form";
 
 function Container({ title, children, onSubmit }) {
   return (
     <Form
-      className="p-7 flex flex-col gap-2 rounded drop-shadow bg-blue-50"
+      className="p-10 flex flex-col gap-2 rounded drop-shadow-lg bg-slate-50"
       onSubmit={onSubmit}
     >
       {title && <h3>{title}</h3>}
