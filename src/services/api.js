@@ -29,23 +29,23 @@ const {
 
 export const httpMessages = {
   success: {
-    [Ok]: "درخواست موفقیت آمیز بود.",
-    [Created]: "عملیات با موفقیت انجام شد.",
-    [Accepted]: "درخواست انجام شد.",
+    [Ok]: "Operation was successful.",
+    [Created]: "Created successfully.",
+    [Accepted]: "Accepted.",
   },
   error: {
     client: {
-      [BadRequest]: "مقادیر نامعتبر می باشند.",
-      [Unauthorized]: "احراز هویت ناموفق بود.",
-      [Forbidden]: "دسترسی غیر مجاز.",
-      [NotFound]: "پیدا نشد.",
-      [TooManyRequests]: "درخواست های بیش از حد مجاز.",
+      [BadRequest]: "Invalid parameters.",
+      [Unauthorized]: "Authentication failed.",
+      [Forbidden]: "Access is not allowed.",
+      [NotFound]: "404 Not found.",
+      [TooManyRequests]: "Too many requests attempted.",
     },
     server: {
-      [InternalServerError]: "خطای سرور.",
+      [InternalServerError]: "Internal server error.",
     },
     network: {
-      ["ERR_NETWORK"]: "خطای قطعی اینترنت.",
+      ["ERR_NETWORK"]: "Network error.",
     },
   },
 };
