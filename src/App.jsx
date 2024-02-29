@@ -10,9 +10,9 @@ function App() {
       <LocalConfigProvider>
         <AuthProvider>
           <QueryClientProvider>
-            <div>
+            <>
               <RouterProvider />
-            </div>
+            </>
           </QueryClientProvider>
         </AuthProvider>
       </LocalConfigProvider>
