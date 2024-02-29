@@ -1,10 +1,25 @@
+import { httpMessages } from "@/services/api";
+import { HttpStatusCode } from "axios";
+import { toast } from "react-toastify";
+
 function useQueryHandler() {
   const handleSuccess = (data) => {
-    console.log(data);
+    toast.success(httpMessages.success[data.status]);
   };
 
   const handleError = (error, logoutFn) => {
-    console.log(error);
+    if (error.response) {
+      toast.error(
+        { ...httpMessages.error.client, ...httpMessages.error.server }[
+          error.response.status
+        ]
+      );
+      if (error.response.status === HttpStatusCode.Unauthorized) {
+        logoutFn();
+      }
+    } else {
+      toast.error(httpMessages.error.network[error.code]);
+    }
   };
 
   return { handleSuccess, handleError };
