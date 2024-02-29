@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import Button from "../basic/Button";
+import Button from "../components/basic/Button";
 import { BeatLoader } from "react-spinners";
 const LoadingButton = forwardRef(({ isLoading, loaderSize, ...rest }, ref) => {
   return (
