@@ -6,6 +6,10 @@ import { useMutation } from "@tanstack/react-query";
 import api from "@/services/api";
 import LoadingButton from "@/enhanced/LoadingButton";
 import { Link, useNavigate } from "@tanstack/react-router";
+import { joiResolver } from "@hookform/resolvers/joi";
+import Joi from "joi";
+import validators from "@/rules/validators";
+import HFSelect from "@/hf-controlled/HFSelect";
 
 function SignupForm() {
   const navigate = useNavigate();
@@ -26,7 +30,19 @@ function SignupForm() {
       username: "",
       password: "",
       confirmPassword: "",
+      role: "admin",
     },
+    resolver: joiResolver(
+      Joi.object({
+        firstName: validators.firstName(),
+        lastName: validators.lastName(),
+        email: validators.email(),
+        username: validators.username(),
+        password: validators.password(),
+        confirmPassword: validators.confirmPassword("password"),
+        role: validators.role("admin", "user"),
+      })
+    ),
   });
 
   return (
@@ -41,8 +57,21 @@ function SignupForm() {
         name="confirmPassword"
         control={control}
       />
+      <HFSelect
+        label="Role"
+        name="role"
+        control={control}
+        options={[
+          { label: "Admin", value: "admin" },
+          { label: "User", value: "user" },
+        ]}
+      />
       <>
-        <LoadingButton isLoading={isPending} className="mt-3 mb-1">
+        <LoadingButton
+          type="submit"
+          isLoading={isPending}
+          className="mt-3 mb-1"
+        >
           Submit
         </LoadingButton>
         <p>
